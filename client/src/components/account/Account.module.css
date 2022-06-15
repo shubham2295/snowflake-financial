@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+.account_title {
+  margin-bottom: 1.5rem;
+}
+
+.account_balance {
+  color: var(--text-secondary-color);
+}
+
+.btn_actions {
+  margin: 1.5rem 0;
+}
+
+.mr {
+  margin-right: 1rem;
+}
+
+.trans_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 50%;
+  margin-top: 1.5rem;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.trans_image {
+  border-radius: 50%;
+  background-color: var(--pastal);
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.trans_desc {
+  align-self: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.trans_date {
+  color: var(--text-secondary-color);
+  font-size: 0.8rem;
+}
+
+.trans_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-52 {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 0.05rem solid black;
+  cursor: pointer;
+  position: relative;
+  border-radius: 0.5rem;
+}
+
+.button-52:after {
+  content: '';
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 0.5rem;
+  left: 0.5rem;
+  transition: 0.2s;
+  border-radius: 0.5rem;
+}
+
+.button-52:hover:after {
+  top: 0;
+  left: 0;
+}

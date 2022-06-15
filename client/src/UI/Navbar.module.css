@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  background: var(--yellow);
+  height: 2rem;
+  justify-content: space-between;
+  padding: 1.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.navlinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navlinks li {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.btn {
+  border-radius: 0.25rem;
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background-color: var(--dark-purple);
+}
