@@ -1,0 +1,26 @@
+.form_body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form_body_btn_action {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_body .cancel::after {
+  background-color: var(--light-red);
+}
+
+.form_body .done::after {
+  background-color: var(--light-blue);
+}
+
+.form_title {
+  font-family: 'Monofett', cursive;
+  color: var(--dark-purple);
+  letter-spacing: 0.5rem;
+}
