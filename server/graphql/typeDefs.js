@@ -1,12 +1,25 @@
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
+
+  type User{
+    id: ID!
+    email: String
+    password: String
+    token: String
+  }
+
   type Transaction{
-    ID: ID
+    id: ID!
     description: String
     type: String
     createdAt: String
     amount: Float
+  }
+
+  input UserInput{
+    email: String
+    password: String
   }
 
   input TransactionInput{
@@ -16,11 +29,15 @@ const typeDefs = gql`
   }
 
   type Query{
+    getUserById(ID: ID!): User!
     getTransaction(ID: ID!): Transaction!
     getAllTransactions: [Transaction!]!
+
   }
 
   type Mutation{
+    registerUser(userDetail: UserInput): User!
+    loginUser(userDetail: UserInput): User!
     createTransaction(transactionDetail: TransactionInput ) : Transaction!
     deleteTransaction(ID: ID!): Boolean
   }

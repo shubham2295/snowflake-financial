@@ -1,29 +1,31 @@
 const Transaction = require('../models/Transaction');
 
-const resolvers = {
+const transactionResolver = {
+
   Query: {
-    async getTransaction(_, { ID }) {
+    getTransaction: async (_, { ID }) => {
       return await Transaction.findById(ID);
     },
-    async getAllTransactions() {
+    getAllTransactions: async () => {
       return await Transaction.find().sort({ createdAt: -1 });
     }
   },
+
   Mutation: {
-    async createTransaction(_, { transactionDetail: { description, type, amount } }) {
+    createTransaction: async (_, { transactionDetail: { description, type, amount } }) => {
       const createdTransaction = new Transaction({
         description, amount, type,
         createdAt: new Date().toISOString()
       });
 
       const res = await createdTransaction.save();
-
+      console.log(res);
       return {
         id: res.id,
         ...res._doc
       };
     },
-    async deleteTransaction(_, { ID }) {
+    deleteTransaction: async (_, { ID }) => {
       const wasDeleted = (await Transaction.deleteOne({ _id: ID })).deletedCount;
       return wasDeleted;
     }
@@ -31,4 +33,4 @@ const resolvers = {
   }
 };
 
-module.exports = resolvers;
+module.exports = transactionResolver;
