@@ -1,7 +1,6 @@
 import classes from './Register.module.css';
 import { useMutation, gql } from '@apollo/client';
 import { useRef, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import AuthContext from '../store/auth-ctx';
 
 const USER_LOGIN = gql`
@@ -15,6 +14,7 @@ const USER_LOGIN = gql`
 `;
 
 const Login = () => {
+  const authCtx = useContext(AuthContext);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const email = emailRef.current?.value;
@@ -22,7 +22,8 @@ const Login = () => {
 
   const [loginUser] = useMutation(USER_LOGIN, {
     variables: { userDetail: { email, password } },
-    onCompleted: (data) => console.log(data),
+    onCompleted: (data) =>
+      authCtx.onLogin(data.loginUser.token, data.loginUser.firstname),
   });
 
   const formSubmitHandler = (e) => {

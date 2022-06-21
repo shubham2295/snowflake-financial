@@ -1,7 +1,7 @@
 import classes from './Navbar.module.css';
-import AuthContext from '../store/auth-ctx';
-import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from '../store/auth-ctx';
 
 const Navbar = () => {
   const authCtx = useContext(AuthContext);

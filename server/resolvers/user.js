@@ -42,9 +42,8 @@ const userResolver = {
       return res;
 
     },
-
     loginUser: async (_, { userDetail: { email, password } }) => {
-
+      console.log('Login function called on backend');
       const user = await User.findOne({ email });
       console.log(user);
       const isValidUser = await bcrypt.compare(password, user.password);
