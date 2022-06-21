@@ -10,7 +10,8 @@
 
 .modal {
   position: fixed;
-  top: 35%;
+  top: 25%;
+  margin: 1.5rem;
   width: fit-content;
   background-color: white;
   padding: 1.5rem;
@@ -23,7 +24,7 @@
 @media (min-width: 768px) {
   .modal {
     width: auto;
-    left: 40%;
+    left: 33%;
   }
 }
 

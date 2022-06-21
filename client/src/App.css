@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  font-family: inherit;
 }
 
 .form_body_btn_action {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,4 +24,15 @@
   font-family: 'Monofett', cursive;
   color: var(--dark-purple);
   letter-spacing: 0.5rem;
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.form_body input {
+  height: 1.5rem;
+  border: 0.065rem solid hsla(0, 1%, 37%, 0.3);
+  border-radius: 0.625rem;
+  padding: 0.25rem;
+  font-size: 1rem;
 }

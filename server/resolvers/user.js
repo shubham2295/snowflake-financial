@@ -10,9 +10,11 @@ const userResolver = {
       return await User.findById(ID);
     }
 
+
+
   },
   Mutation: {
-    registerUser: async (_, { userDetail: { email, password } }) => {
+    registerUser: async (_, { userDetail: { email, password, firstname, lastname } }) => {
 
       // Checking if user with the email already exists 
       const isEmailExists = await User.findOne({ email: email });
@@ -26,7 +28,9 @@ const userResolver = {
 
       const newUser = new User({
         email: email.toLowerCase(),
-        password: encryptedPassword
+        password: encryptedPassword,
+        firstname,
+        lastname
       });
 
       // Generating jwt and attaching it to user model
@@ -35,10 +39,7 @@ const userResolver = {
 
       const res = await newUser.save();
 
-      return {
-        id: res.id,
-        ...res._doc
-      };
+      return res;
 
     },
 
@@ -49,13 +50,19 @@ const userResolver = {
       const isValidUser = await bcrypt.compare(password, user.password);
 
       if (user && isValidUser) {
-        const token = jwt.sign({ id: user.id, email }, "THIS_IS_SECRET", { expiresIn: "2h" });
+        const token = jwt.sign({ id: user.id, email }, "THIS_IS_SECRET", /* { expiresIn: "2h" } */);
         user.token = token;
+
         return user;
       } else {
         throw new ApolloError('Incorrect password', 'INCORRECT_PASSWORD');
       }
 
+    },
+
+    deleteAllUsers: async () => {
+      const deleteCount = (await User.deleteMany({})).deletedCount;;
+      return deleteCount;
     }
 
   }

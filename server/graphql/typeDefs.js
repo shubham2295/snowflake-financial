@@ -4,8 +4,10 @@ const typeDefs = gql`
 
   type User{
     id: ID!
-    email: String
-    password: String
+    firstname: String!
+    lastname: String!
+    email: String!
+    password: String!
     token: String
   }
 
@@ -18,6 +20,8 @@ const typeDefs = gql`
   }
 
   input UserInput{
+    firstname: String
+    lastname: String
     email: String
     password: String
   }
@@ -38,8 +42,10 @@ const typeDefs = gql`
   type Mutation{
     registerUser(userDetail: UserInput): User!
     loginUser(userDetail: UserInput): User!
+    deleteAllUsers: Boolean
     createTransaction(transactionDetail: TransactionInput ) : Transaction!
     deleteTransaction(ID: ID!): Boolean
+
   }
 `;
 

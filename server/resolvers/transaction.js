@@ -19,7 +19,7 @@ const transactionResolver = {
       });
 
       const res = await createdTransaction.save();
-      console.log(res);
+
       return {
         id: res.id,
         ...res._doc

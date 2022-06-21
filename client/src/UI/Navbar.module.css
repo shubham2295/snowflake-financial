@@ -15,7 +15,9 @@
   cursor: pointer;
 }
 
-.navlinks li {
+.navlinks li,
+a {
+  all: unset;
   margin-right: 1rem;
   font-weight: bold;
 }
