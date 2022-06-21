@@ -1,38 +1,48 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 //authCtx to manage global data
 const AuthContext = React.createContext({
-  username: null,
-  token: null,
-  onLogin: (token, username) => { },
+  user: null,
+  onLogin: (token) => { },
   onLogout: () => { },
 });
 
+/* if (localStorage.getItem('authToken')) {
+  const decodedToken = jwtDecode(localStorage.getItem('authToken'));
+
+  if (decodedToken.exp * 1000 < Date.now()) {
+    localStorage.clear();
+  } else {
+    AuthContext.user = decodedToken;
+  }
+
+} */
+
 export const AuthContextProvider = (props) => {
 
-
+  const navigate = useNavigate();
   const initialToken = localStorage.getItem('authToken');
-  const initialName = localStorage.getItem('username');
-  const [token, setToken] = useState(initialToken);
-  const [username, setUsername] = useState(initialName);
+  const initialUserInfo = initialToken ? jwtDecode(initialToken) : null;
+  const [user, setUser] = useState(initialUserInfo);
+
 
   const logoutHandler = () => {
     localStorage.clear();
-    setToken(null);
-    setUsername(null);
+    setUser(null);
+    navigate('/login');
   };
 
-  const loginHandler = (token, username) => {
-    setToken(token);
-    setUsername(username);
+  const loginHandler = (token) => {
+    setUser(jwtDecode(token));
     localStorage.setItem('authToken', token);
-    localStorage.setItem('username', username);
+    navigate('/account');
   };
 
   return (<AuthContext.Provider
     value={ {
-      token,
-      username,
+      user,
       onLogout: logoutHandler,
       onLogin: loginHandler
     } }>{ props.children }</AuthContext.Provider>);

@@ -4,7 +4,7 @@ import { useRef, useContext } from 'react';
 import AuthContext from '../store/auth-ctx';
 
 const USER_LOGIN = gql`
-  mutation Mutation($userDetail: UserInput) {
+  mutation Mutation($userDetail: LoginUserInput) {
     loginUser(userDetail: $userDetail) {
       firstname
       email
@@ -15,21 +15,32 @@ const USER_LOGIN = gql`
 
 const Login = () => {
   const authCtx = useContext(AuthContext);
+
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const email = emailRef.current?.value;
-  const password = passwordRef.current?.value;
 
   const [loginUser] = useMutation(USER_LOGIN, {
-    variables: { userDetail: { email, password } },
-    onCompleted: (data) =>
-      authCtx.onLogin(data.loginUser.token, data.loginUser.firstname),
+    update: (
+      _,
+      {
+        data: {
+          loginUser: { token },
+        },
+      },
+    ) => {
+      authCtx.onLogin(token);
+    },
+    onError: ({ graphQLErrors }) => {
+      console.log(graphQLErrors);
+    },
   });
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if (email && password) {
-      loginUser();
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+    if ((email !== '' || null) && (password !== '' || null)) {
+      loginUser({ variables: { userDetail: { email, password } } });
     }
   };
 

@@ -10,9 +10,9 @@ const Navbar = () => {
     <nav className={classes.navbar}>
       <h1>❄️</h1>
       <ul className={classes.navlinks}>
-        {authCtx.token && <li>Hello {authCtx.username} </li>}
-        {authCtx.token && <li>My Accounts</li>}
-        {!authCtx.token && (
+        {authCtx.user && <li>Hello {authCtx.user.firstname} </li>}
+        {authCtx.user && <li>My Accounts</li>}
+        {!authCtx.user && (
           <>
             <li>
               <NavLink to='/login'>Login</NavLink>
@@ -22,7 +22,7 @@ const Navbar = () => {
             </li>
           </>
         )}
-        {authCtx.token && (
+        {authCtx.user && (
           <li>
             <button className={classes.btn} onClick={authCtx.onLogout}>
               Logout

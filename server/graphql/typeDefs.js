@@ -19,11 +19,16 @@ const typeDefs = gql`
     amount: Float
   }
 
-  input UserInput{
-    firstname: String
-    lastname: String
-    email: String
-    password: String
+  input RegisterUserInput{
+    firstname: String!
+    lastname: String!
+    email: String!
+    password: String!
+  }
+
+  input LoginUserInput{
+    email: String!
+    password: String!
   }
 
   input TransactionInput{
@@ -40,8 +45,8 @@ const typeDefs = gql`
   }
 
   type Mutation{
-    registerUser(userDetail: UserInput): User!
-    loginUser(userDetail: UserInput): User!
+    registerUser(userDetail: RegisterUserInput): User!
+    loginUser(userDetail: LoginUserInput): User!
     deleteAllUsers: Boolean
     createTransaction(transactionDetail: TransactionInput ) : Transaction!
     deleteTransaction(ID: ID!): Boolean

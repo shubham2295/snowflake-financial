@@ -2,9 +2,10 @@ import classes from './Register.module.css';
 import { useMutation, gql } from '@apollo/client';
 import { useState, useContext } from 'react';
 import AuthContext from '../store/auth-ctx';
+import { useNavigate } from 'react-router-dom';
 
 const REGISTER_USER = gql`
-  mutation RegisterUser($userDetail: UserInput) {
+  mutation RegisterUser($userDetail: RegisterUserInput) {
     registerUser(userDetail: $userDetail) {
       firstname
       token
@@ -14,6 +15,7 @@ const REGISTER_USER = gql`
 
 const Register = () => {
   const authCtx = useContext(AuthContext);
+
   const [user, setUser] = useState({
     firstname: '',
     lastname: '',
@@ -23,8 +25,18 @@ const Register = () => {
 
   const [registerUser] = useMutation(REGISTER_USER, {
     variables: { userDetail: { ...user } },
-    onCompleted: (data) => {
-      authCtx.onLogin(data.registerUser.token, data.registerUser.firstname);
+    update: (
+      _,
+      {
+        data: {
+          registerUser: { token },
+        },
+      },
+    ) => {
+      authCtx.onLogin(token);
+    },
+    onError: ({ graphQLErrors }) => {
+      console.log(graphQLErrors);
     },
   });
 

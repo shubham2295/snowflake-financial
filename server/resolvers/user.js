@@ -34,7 +34,7 @@ const userResolver = {
       });
 
       // Generating jwt and attaching it to user model
-      const token = jwt.sign({ id: newUser._id, email }, "THIS_IS_SECRET", { expiresIn: "2h" });
+      const token = jwt.sign({ id: newUser._id, firstname: newUser.firstname }, "THIS_IS_SECRET", { expiresIn: "2h" });
       newUser.token = token;
 
       const res = await newUser.save();
@@ -43,18 +43,19 @@ const userResolver = {
 
     },
     loginUser: async (_, { userDetail: { email, password } }) => {
-      console.log('Login function called on backend');
+
       const user = await User.findOne({ email });
-      console.log(user);
+      if (!user) {
+        throw new ApolloError('Incorrect Email. Please check your email.', 'INCORRECT_Email');
+      }
       const isValidUser = await bcrypt.compare(password, user.password);
 
       if (user && isValidUser) {
-        const token = jwt.sign({ id: user.id, email }, "THIS_IS_SECRET", /* { expiresIn: "2h" } */);
+        const token = jwt.sign({ id: user.id, firstname: user.firstname }, "THIS_IS_SECRET", /* { expiresIn: "2h" } */);
         user.token = token;
-
         return user;
       } else {
-        throw new ApolloError('Incorrect password', 'INCORRECT_PASSWORD');
+        throw new ApolloError('Incorrect password. Please check your password.', 'INCORRECT_PASSWORD');
       }
 
     },
