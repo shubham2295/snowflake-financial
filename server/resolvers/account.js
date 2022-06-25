@@ -4,6 +4,13 @@ const accountResolver = {
 
   Query: {
 
+    getAllAccounts: async (_, __, { userId }) => {
+      console.log('userId from get allacc', userId);
+      const accounts = await Account.find({ user_id: userId });
+      console.log('find account result', accounts);
+      return accounts;
+    }
+
   },
 
   Mutation: {

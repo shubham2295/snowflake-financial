@@ -5,20 +5,24 @@ const resolvers = require('./resolvers/resolvers');
 const getUser = require('./utils/getUser');
 
 const MONGODB = 'mongodb://localhost:27017/bank';
-
+let i = 1;
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
 
+
+    console.log(i, req.headers);
+    i++;
     const token = req.headers.authorization || '';
 
     if (token) {
       const userId = getUser(token);
-      console.log(userId);
+      console.log('Setting up context', userId);
       return { userId };
     }
+
   }
 });
 

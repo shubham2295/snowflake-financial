@@ -1,11 +1,11 @@
-import classes from './Account.module.css';
+import classes from './AccountDetail.module.css';
 import TransactionList from './TransactionList';
 import transctions from '../deno/transactions';
 import { useState } from 'react';
 import DepositModal from './DepositModal';
 import EtransferModal from './EtransferModal';
 
-const Account = () => {
+const AccountDetail = () => {
   const [depositModalVisible, setDepositModalVisible] = useState(false);
   const [sendEtransferModalVisible, setSendEtransferModalVisible] =
     useState(false);
@@ -39,4 +39,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default AccountDetail;

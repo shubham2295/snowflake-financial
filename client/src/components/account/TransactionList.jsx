@@ -1,4 +1,4 @@
-import classes from './Account.module.css';
+import classes from './AccountDetail.module.css';
 import Transaction from './Transaction';
 
 const TransactionList = (props) => {

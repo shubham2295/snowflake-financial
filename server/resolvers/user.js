@@ -42,8 +42,6 @@ const userResolver = {
     },
     loginUser: async (_, { userDetail: { email, password } }, context) => {
 
-      console.log(context);
-
       const user = await User.findOne({ email });
       if (!user) {
         throw new ApolloError('Incorrect Email. Please check your email.', 'INCORRECT_Email');

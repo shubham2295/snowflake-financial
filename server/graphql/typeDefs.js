@@ -67,6 +67,8 @@ const typeDefs = gql`
   type Query{
     getUserById(ID: ID!): User!
 
+    getAllAccounts: [Account!]
+
     getTransaction(ID: ID!): Transaction!
     getAllTransactions: [Transaction!]!
     getAllTransactionsForAccountById(accountId: ID!): [Transaction]

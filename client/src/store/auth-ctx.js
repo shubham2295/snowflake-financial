@@ -9,17 +9,6 @@ const AuthContext = React.createContext({
   onLogout: () => { },
 });
 
-/* if (localStorage.getItem('authToken')) {
-  const decodedToken = jwtDecode(localStorage.getItem('authToken'));
-
-  if (decodedToken.exp * 1000 < Date.now()) {
-    localStorage.clear();
-  } else {
-    AuthContext.user = decodedToken;
-  }
-
-} */
-
 export const AuthContextProvider = (props) => {
 
   const navigate = useNavigate();
@@ -35,9 +24,9 @@ export const AuthContextProvider = (props) => {
   };
 
   const loginHandler = (token) => {
-    setUser(jwtDecode(token));
     localStorage.setItem('authToken', token);
-    navigate('/account');
+    setUser(jwtDecode(token));
+    navigate('/accounts');
   };
 
   return (<AuthContext.Provider

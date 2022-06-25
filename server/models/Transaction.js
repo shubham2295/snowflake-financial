@@ -1,5 +1,4 @@
 const { model, Schema, Types } = require('mongoose');
-const Account = require('./Account');
 
 const transactionSchema = new Schema({
   account_id: { type: Types.ObjectId, ref: 'Account' },
