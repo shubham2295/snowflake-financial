@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Account = require('../models/Account');
 const { ApolloError } = require('apollo-server-errors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -7,11 +8,8 @@ const userResolver = {
   Query: {
 
     getUserById: async (_, { ID }) => {
-      return await User.findById(ID);
+      return await User.findById(ID).populate('accounts');
     }
-
-
-
   },
   Mutation: {
     registerUser: async (_, { userDetail: { email, password, firstname, lastname } }) => {
@@ -42,7 +40,9 @@ const userResolver = {
       return res;
 
     },
-    loginUser: async (_, { userDetail: { email, password } }) => {
+    loginUser: async (_, { userDetail: { email, password } }, context) => {
+
+      console.log(context);
 
       const user = await User.findOne({ email });
       if (!user) {
@@ -51,7 +51,7 @@ const userResolver = {
       const isValidUser = await bcrypt.compare(password, user.password);
 
       if (user && isValidUser) {
-        const token = jwt.sign({ id: user.id, firstname: user.firstname }, "THIS_IS_SECRET", /* { expiresIn: "2h" } */);
+        const token = jwt.sign({ id: user.id, firstname: user.firstname }, "THIS_IS_SECRET", { expiresIn: "2h" });
         user.token = token;
         return user;
       } else {
@@ -63,7 +63,7 @@ const userResolver = {
     deleteAllUsers: async () => {
       const deleteCount = (await User.deleteMany({})).deletedCount;;
       return deleteCount;
-    }
+    },
 
   }
 };

@@ -2,7 +2,6 @@ import classes from './Register.module.css';
 import { useMutation, gql } from '@apollo/client';
 import { useState, useContext } from 'react';
 import AuthContext from '../store/auth-ctx';
-import { useNavigate } from 'react-router-dom';
 
 const REGISTER_USER = gql`
   mutation RegisterUser($userDetail: RegisterUserInput) {
@@ -75,7 +74,7 @@ const Register = () => {
         />
         <label htmlFor='password'></label>
         <input
-          type='text'
+          type='password'
           name='password'
           placeholder='Password'
           onChange={handleChange}

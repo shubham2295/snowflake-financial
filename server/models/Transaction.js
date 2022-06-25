@@ -1,10 +1,12 @@
-const { model, Schema } = require('mongoose');
+const { model, Schema, Types } = require('mongoose');
+const Account = require('./Account');
 
 const transactionSchema = new Schema({
+  account_id: { type: Types.ObjectId, ref: 'Account' },
   description: String,
-  type: String,
-  createdAt: String,
-  amount: Number
+  type: { type: String, enum: ['CREDIT', 'DEBIT'] },
+  createdAt: { type: String, default: new Date().toISOString() },
+  amount: { type: Number, Min: 0.00 }
 });
 
 module.exports = model('Transaction', transactionSchema);

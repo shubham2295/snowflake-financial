@@ -6,16 +6,20 @@ const transactionResolver = {
     getTransaction: async (_, { ID }) => {
       return await Transaction.findById(ID);
     },
-    getAllTransactions: async () => {
+    getAllTransactions: async (_, __, { userId }) => {
       return await Transaction.find().sort({ createdAt: -1 });
+    },
+    getAllTransactionsForAccountById: async (_, { accountId }, { userId }) => {
+
+      return await Transaction.find({ account_id: accountId }).sort({ createdAt: -1 });
+
     }
   },
 
   Mutation: {
-    createTransaction: async (_, { transactionDetail: { description, type, amount } }) => {
+    createTransaction: async (_, { transactionDetail: { account_id, description, type, amount } }) => {
       const createdTransaction = new Transaction({
-        description, amount, type,
-        createdAt: new Date().toISOString()
+        description, amount, type, account_id
       });
 
       const res = await createdTransaction.save();
