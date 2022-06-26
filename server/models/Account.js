@@ -10,7 +10,6 @@ const accountSchema = new Schema({
   start_date: { type: String, default: new Date().toISOString() },
   end_date: { type: String, default: null },
   is_freeze: { type: Boolean, default: false },
-
 });
 
 module.exports = model('Account', accountSchema);
