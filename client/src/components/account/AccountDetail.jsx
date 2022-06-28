@@ -31,13 +31,11 @@ const AccountDetail = () => {
   const [sendEtransferModalVisible, setSendEtransferModalVisible] =
     useState(false);
   const [searchParams] = useSearchParams();
-  let accountId = searchParams.get('acctId');
+  const accountId = searchParams.get('acctId');
 
-  const { data, loading, error } = useQuery(GET_ACCOUNT_DETAILS, {
+  const { data } = useQuery(GET_ACCOUNT_DETAILS, {
     variables: { accountId },
   });
-
-  console.log(data);
 
   return (
     <div className={classes.container}>
@@ -61,11 +59,15 @@ const AccountDetail = () => {
         transactions={data?.getAccountDetailAndTransactions?.transactions}
       />
       {depositModalVisible && (
-        <DepositModal onCloseModal={() => setDepositModalVisible(false)} />
+        <DepositModal
+          onCloseModal={() => setDepositModalVisible(false)}
+          accId={accountId}
+        />
       )}
       {sendEtransferModalVisible && (
         <EtransferModal
           onCloseModal={() => setSendEtransferModalVisible(false)}
+          accId={accountId}
         />
       )}
     </div>

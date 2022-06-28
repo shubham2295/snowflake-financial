@@ -2,8 +2,6 @@ import classes from './Account.module.css';
 import { Link } from 'react-router-dom';
 
 const Account = (props) => {
-  console.log(props);
-
   return (
     <Link to={`/accountDetail/?acctId=${props.id}`}>
       <div className={classes.main}>

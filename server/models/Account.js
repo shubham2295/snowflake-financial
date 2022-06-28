@@ -12,4 +12,10 @@ const accountSchema = new Schema({
   is_freeze: { type: Boolean, default: false },
 });
 
+accountSchema.statics = {
+  get: function(_id) {
+    return this.findOne({ _id }).exec();
+  }
+};
+
 module.exports = model('Account', accountSchema);

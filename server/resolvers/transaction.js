@@ -15,11 +15,6 @@ const transactionResolver = {
       const accountDetail = await Account.findById(accountId);
       const transactions = await Transaction.find({ account_id: accountId }).sort({ createdAt: -1 });
 
-      console.log('accountDetail', {
-        account: { ...accountDetail },
-        transactions: { ...transactions }
-      });
-
       return {
         account: accountDetail,
         transactions: transactions
@@ -36,10 +31,8 @@ const transactionResolver = {
 
       const res = await createdTransaction.save();
 
-      return {
-        id: res.id,
-        ...res._doc
-      };
+      console.log(res);
+      return res;
     },
     deleteTransaction: async (_, { ID }) => {
       const wasDeleted = (await Transaction.deleteOne({ _id: ID })).deletedCount;

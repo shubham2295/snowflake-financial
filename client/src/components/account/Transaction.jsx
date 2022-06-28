@@ -14,7 +14,9 @@ const Transaction = (props) => {
           </div>
         </div>
       </div>
-      <div>{`${props.type === 'CREDIT' ? '$' : '-$'}${props.amount}`}</div>
+      <div className={props.type === 'CREDIT' ? `${classes.grn}` : ''}>{`${
+        props.type === 'CREDIT' ? '$' : '-$'
+      }${props.amount}`}</div>
     </div>
   );
 };
