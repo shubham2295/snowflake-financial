@@ -38,6 +38,11 @@ const typeDefs = gql`
     amount: Float
   }
 
+  type AccountDetail {
+    account: Account!
+    transactions: [Transaction!]
+  }
+  
   input RegisterUserInput{
     firstname: String!
     lastname: String!
@@ -64,6 +69,8 @@ const typeDefs = gql`
     amount: Float!
   }
 
+
+
   type Query{
     getUserById(ID: ID!): User!
 
@@ -71,7 +78,7 @@ const typeDefs = gql`
 
     getTransaction(ID: ID!): Transaction!
     getAllTransactions: [Transaction!]!
-    getAllTransactionsForAccountById(accountId: ID!): [Transaction]
+    getAccountDetailAndTransactions(accountId: ID!): AccountDetail!
   }
 
   type Mutation{

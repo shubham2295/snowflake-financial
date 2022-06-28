@@ -8,14 +8,17 @@
   --pink: #f4bfbf;
   --dark-purple: #646fd4;
   --light-red: #f87474;
-  --text-primary-color: #030303;
+  --light-green: #b8f1b0;
+  --text-primary-color: #000000;
   --text-secondary-color: #606060;
+  --text-silver: #696969;
 }
 
 body {
   margin: 0;
   font-family: 'Noto Sans', sans-serif;
   color: var(--text-primary-color);
+  background-color: #f2f2f2;
 }
 
 ul,

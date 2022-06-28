@@ -12,6 +12,18 @@ const resolvers = {
     ...userResolver.Mutation,
     ...transactionResolver.Mutation,
     ...accountResolver.Mutation
+  },
+  AccountDetail: {
+    __resolveType: object => {
+      console.log('Executed or not', object);
+      if (object.accountDetail.balance) {
+        return 'Account';
+      }
+      if (Array.isArray(object.transactions)) {
+        return 'Transaction';
+      }
+      return null;
+    }
   }
 };
 

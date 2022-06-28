@@ -10,7 +10,8 @@
 
 .modal {
   position: fixed;
-  top: 25%;
+  top: 50%;
+  left: 50%;
   margin: 1.5rem;
   width: fit-content;
   background-color: white;
@@ -21,20 +22,20 @@
   animation: slide-down 300ms ease-out forwards;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .modal {
     width: auto;
-    left: 33%;
+    left: 28%;
   }
-}
+} */
 
 @keyframes slide-down {
   from {
     opacity: 0;
-    transform: translateY(-3rem);
+    transform: translate(-100%, -100%);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, -50%);
   }
 }

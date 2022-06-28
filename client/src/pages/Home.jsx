@@ -1,5 +1,8 @@
 import { useQuery, gql } from '@apollo/client';
-import Accounts from '../components/account/Accounts';
+import { useState } from 'react';
+import AccountList from '../components/account/AccountList';
+import NewAccountModal from '../components/account/NewAccountModal';
+import classes from './Home.module.css';
 
 const GET_ALL_ACCOUNTS = gql`
   query Query {
@@ -20,12 +23,24 @@ const Home = () => {
     fetchPolicy: 'network-only',
   });
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
-    <div>
+    <div className={classes.main_container}>
       {data?.getAllAccounts.length ? (
-        <Accounts details={data?.getAllAccounts} />
+        <AccountList accounts={data?.getAllAccounts} />
       ) : (
         ''
+      )}
+      <div className={classes.new} onClick={() => setModalVisible(true)}>
+        <div>
+          <p>+</p>
+          <p>Create</p>
+          <p>New Account</p>
+        </div>
+      </div>
+      {modalVisible && (
+        <NewAccountModal onCloseModal={() => setModalVisible(false)} />
       )}
     </div>
   );

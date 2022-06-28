@@ -2,7 +2,7 @@ import classes from './AccountDetail.module.css';
 import Transaction from './Transaction';
 
 const TransactionList = (props) => {
-  const trasactionList = props.transactions.map((trans) => (
+  const trasactionList = props?.transactions?.map((trans) => (
     <Transaction key={trans.id} {...trans} />
   ));
 

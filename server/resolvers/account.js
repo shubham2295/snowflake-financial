@@ -21,6 +21,8 @@ const accountResolver = {
         user_id: userId,
         type,
         name,
+        goal_amount,
+        end_date
       });
 
       const res = await account.save();

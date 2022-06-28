@@ -11,7 +11,11 @@ const Navbar = () => {
       <h1>❄️</h1>
       <ul className={classes.navlinks}>
         {authCtx.user && <li>Hello {authCtx.user.firstname} </li>}
-        {authCtx.user && <li>My Accounts</li>}
+        {authCtx.user && (
+          <li>
+            <NavLink to='/accounts'>My Accounts</NavLink>
+          </li>
+        )}
         {!authCtx.user && (
           <>
             <li>

@@ -41,7 +41,7 @@
 
 .trans_image {
   border-radius: 50%;
-  background-color: var(--pastal);
+
   margin-right: 1rem;
   font-size: 1.5rem;
 }
@@ -60,6 +60,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.CREDIT {
+  background-color: var(--light-green);
+}
+
+.DEBIT {
+  background-color: var(--pastal);
 }
 
 @media only screen and (max-width: 768px) {
