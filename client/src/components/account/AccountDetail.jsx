@@ -69,6 +69,7 @@ const AccountDetail = () => {
         <EtransferModal
           onCloseModal={() => setSendEtransferModalVisible(false)}
           accId={accountId}
+          accBalance={data?.getAccountDetailAndTransactions?.account?.balance}
         />
       )}
     </div>

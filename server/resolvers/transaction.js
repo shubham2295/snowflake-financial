@@ -40,6 +40,27 @@ const transactionResolver = {
       const wasDeleted = (await Transaction.deleteOne({ _id: ID })).deletedCount;
       return wasDeleted;
 
+    },
+    sendEtransfer: async (_, { etransferDetail: { recipient_name, recipient_accountId, msg, amount, accountId, sender_name } }, { userId }) => {
+
+      const recipientTransaction = new Transaction({
+        description: `E-transfer from ${sender_name} for ${msg}`,
+        amount,
+        account_id: recipient_accountId,
+        type: "CREDIT"
+      });
+      const creditRes = recipientTransaction.save();
+
+      const senderTransaction = new Transaction({
+        description: `E-transfer to ${recipient_name} for ${msg}`,
+        amount: -Math.abs(amount),
+        account_id: accountId,
+        type: "DEBIT"
+      });
+      const debitRes = senderTransaction.save();
+
+      return debitRes;
+
     }
   }
 };

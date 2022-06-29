@@ -23,12 +23,13 @@ const NewAccountModal = (props) => {
 
   const submitFormHandler = (e) => {
     e.preventDefault();
+    console.log(value);
     createAccount({
       variables: {
         accountDetail: {
           type: value.type,
           name: value.name,
-          goal_amount: value.goal ? +value.goal_amount : '',
+          goal_amount: value.goal_amount ? +value.goal_amount : 0,
           end_date: value.end_date ? new Date(value.end_date) : '',
         },
       },
@@ -38,8 +39,9 @@ const NewAccountModal = (props) => {
   };
 
   const inputChangeHandler = (e) => {
-    setValue({ ...value, [e.target.name]: e.target.value });
     console.log(value);
+
+    setValue({ ...value, [e.target.name]: e.target.value });
   };
 
   return (
@@ -49,6 +51,9 @@ const NewAccountModal = (props) => {
           <h1 className='form_title'>New Account</h1>
           <label htmlFor='type'>Account Type</label>
           <select name='type' onChange={inputChangeHandler}>
+            <option disabled selected value>
+              -- select type --
+            </option>
             <option value='DEBIT'>Debit</option>
             <option value='CREDIT'>Credit</option>
           </select>
@@ -78,7 +83,9 @@ const NewAccountModal = (props) => {
             <button className='btn cancel' onClick={props.onCloseModal}>
               Cancel
             </button>
-            <button className='btn done'>Confirm</button>
+            <button type='submit' className='btn done'>
+              Confirm
+            </button>
           </div>
         </div>
       </form>

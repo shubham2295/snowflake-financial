@@ -59,7 +59,7 @@ const typeDefs = gql`
   input CreateAccountInput{
     type: AccountType!
     name: String!  
-    goal_amount: Float   
+    goal_amount: Float 
     end_date: String  
   }
 
@@ -70,8 +70,18 @@ const typeDefs = gql`
     amount: Float!
   }
 
+  input EtransferInput{
+    recipient_name: String!
+    recipient_accountId:ID!
+    msg: String!
+    amount: Float!
+    accountId: ID!
+    sender_name: String!
+  }
+
   type Query{
     getUserById(ID: ID!): User!
+    getUserByEmail(email: String): User
 
     getAllAccounts: [Account!]
 
@@ -87,6 +97,7 @@ const typeDefs = gql`
 
     createAccount(accountDetail: CreateAccountInput): Account!
 
+    sendEtransfer(etransferDetail: EtransferInput): Transaction!
     createTransaction(transactionDetail: TransactionInput ) : Transaction!
     deleteTransaction(ID: ID!): Boolean
   }

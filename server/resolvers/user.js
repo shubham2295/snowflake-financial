@@ -9,7 +9,13 @@ const userResolver = {
 
     getUserById: async (_, { ID }) => {
       return await User.findById(ID).populate('accounts');
+    },
+
+    getUserByEmail: async (_, { email }) => {
+      const user = await User.findOne({ email: email.toLowerCase() }).populate('accounts');
+      return user;
     }
+
   },
   Mutation: {
     registerUser: async (_, { userDetail: { email, password, firstname, lastname } }) => {
@@ -32,7 +38,7 @@ const userResolver = {
       });
 
       // Generating jwt and attaching it to user model
-      const token = jwt.sign({ id: newUser._id, firstname: newUser.firstname }, "THIS_IS_SECRET", { expiresIn: "2h" });
+      const token = jwt.sign({ id: newUser._id, firstname: newUser.firstname, lastname: newUser.lastname }, "THIS_IS_SECRET", { expiresIn: "2h" });
       newUser.token = token;
 
       const res = await newUser.save();
@@ -49,7 +55,7 @@ const userResolver = {
       const isValidUser = await bcrypt.compare(password, user.password);
 
       if (user && isValidUser) {
-        const token = jwt.sign({ id: user.id, firstname: user.firstname }, "THIS_IS_SECRET", { expiresIn: "2h" });
+        const token = jwt.sign({ id: user.id, firstname: user.firstname, lastname: user.lastname }, "THIS_IS_SECRET", { expiresIn: "2h" });
         user.token = token;
         return user;
       } else {
