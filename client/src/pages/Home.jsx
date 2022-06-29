@@ -8,6 +8,7 @@ const GET_ALL_ACCOUNTS = gql`
   query Query {
     getAllAccounts {
       id
+      acc_number
       type
       name
       balance

@@ -4,6 +4,7 @@ const { Schema, model, Types } = require('mongoose');
 const accountSchema = new Schema({
   user_id: { type: Types.ObjectId, ref: 'User' },
   type: { type: String, enum: ['CREDIT', 'DEBIT'] },
+  acc_number: { type: Number, default: Math.random().toFixed(16).split('.')[1] },
   name: String,
   balance: { type: Number, default: 0.00 },
   goal_amount: { type: Number, default: null },

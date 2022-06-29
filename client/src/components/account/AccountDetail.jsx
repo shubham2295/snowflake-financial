@@ -11,6 +11,7 @@ const GET_ACCOUNT_DETAILS = gql`
     getAccountDetailAndTransactions(accountId: $accountId) {
       account {
         type
+        acc_number
         name
         balance
         goal_amount

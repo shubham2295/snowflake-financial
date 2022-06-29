@@ -12,9 +12,10 @@
 }
 
 .balance {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--text-primary-color);
   font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 
 .small_title {

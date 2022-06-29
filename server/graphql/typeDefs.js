@@ -19,6 +19,7 @@ const typeDefs = gql`
 
   type Account{
     id: ID!
+    acc_number: Float!
     user_id: ID!
     type: AccountType!
     name: String!
@@ -42,7 +43,7 @@ const typeDefs = gql`
     account: Account!
     transactions: [Transaction!]
   }
-  
+
   input RegisterUserInput{
     firstname: String!
     lastname: String!
@@ -68,8 +69,6 @@ const typeDefs = gql`
     type: String!
     amount: Float!
   }
-
-
 
   type Query{
     getUserById(ID: ID!): User!

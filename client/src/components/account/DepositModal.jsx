@@ -58,6 +58,7 @@ const DepositModal = (props) => {
             type='number'
             name='amount'
             min='1'
+            step='0.01'
             onChange={inputChangeHandler}
           ></input>
           <div className='form_body_btn_action'>
