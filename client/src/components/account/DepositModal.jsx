@@ -15,12 +15,54 @@ const DEPOSIT_MONEY = gql`
   }
 `;
 
+const GET_ACCOUNT_DETAILS = gql`
+  query Query($accountId: ID!) {
+    getAccountDetailAndTransactions(accountId: $accountId) {
+      account {
+        type
+        acc_number
+        name
+        balance
+        goal_amount
+      }
+      transactions {
+        id
+        description
+        type
+        createdAt
+        amount
+      }
+    }
+  }
+`;
+
 const DepositModal = (props) => {
-  const [value, setValue] = useState({
-    description: null,
-    amount: null,
+  const [value, setValue] = useState({});
+  const [submitDeposit] = useMutation(DEPOSIT_MONEY, {
+    update: (cache, { data }) => {
+      const newTransResponse = data?.createTransaction;
+      const existingTrans = cache.readQuery({
+        query: GET_ACCOUNT_DETAILS,
+        variables: { accountId: props.accId },
+      });
+      console.log(newTransResponse);
+      console.log(existingTrans);
+      if (newTransResponse && existingTrans) {
+        cache.writeQuery({
+          query: GET_ACCOUNT_DETAILS,
+          data: {
+            getAccountDetailAndTransactions: {
+              account: existingTrans?.getAccountDetailAndTransactions?.account,
+              transactions: [
+                newTransResponse,
+                ...existingTrans?.getAccountDetailAndTransactions?.transactions,
+              ],
+            },
+          },
+        });
+      }
+    },
   });
-  const [submitDeposit] = useMutation(DEPOSIT_MONEY);
 
   const inputChangeHandler = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
@@ -28,7 +70,6 @@ const DepositModal = (props) => {
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-    console.log(value);
     submitDeposit({
       variables: {
         transactionDetail: {
