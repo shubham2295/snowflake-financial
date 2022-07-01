@@ -44,7 +44,9 @@ const AccountDetail = () => {
         {data?.getAccountDetailAndTransactions?.account?.name}
       </h1>
       <h4 className={classes.account_balance}>Total Balance</h4>
-      <h2>$ {data?.getAccountDetailAndTransactions?.account?.balance}</h2>
+      <h2>
+        $ {data?.getAccountDetailAndTransactions?.account?.balance.toFixed(2)}
+      </h2>
       <div className={classes.btn_actions}>
         <button className='btn' onClick={() => setDepositModalVisible(true)}>
           + Fund

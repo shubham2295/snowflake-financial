@@ -39,7 +39,10 @@ const GET_ACCOUNT_DETAILS = gql`
 const DepositModal = (props) => {
   const [value, setValue] = useState({});
   const [submitDeposit] = useMutation(DEPOSIT_MONEY, {
-    update: (cache, { data }) => {
+    refetchQueries: [
+      { query: GET_ACCOUNT_DETAILS, variables: { accountId: props.accId } },
+    ],
+    /* update: (cache, { data }) => {
       const newTransResponse = data?.createTransaction;
       const existingTrans = cache.readQuery({
         query: GET_ACCOUNT_DETAILS,
@@ -61,7 +64,7 @@ const DepositModal = (props) => {
           },
         });
       }
-    },
+    } */
   });
 
   const inputChangeHandler = (e) => {

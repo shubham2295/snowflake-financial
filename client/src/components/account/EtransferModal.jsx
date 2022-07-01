@@ -29,13 +29,38 @@ const SEND_ETRANSFER = gql`
   }
 `;
 
+const GET_ACCOUNT_DETAILS = gql`
+  query Query($accountId: ID!) {
+    getAccountDetailAndTransactions(accountId: $accountId) {
+      account {
+        type
+        acc_number
+        name
+        balance
+        goal_amount
+      }
+      transactions {
+        id
+        description
+        type
+        createdAt
+        amount
+      }
+    }
+  }
+`;
+
 const EtransferModal = (props) => {
   const {
     user: { firstname, lastname },
   } = useContext(AuthContext);
   const [value, setValue] = useState({});
   const [getUser, { called, data }] = useLazyQuery(GET_USER_BY_EMAIL);
-  const [sendEtransfer] = useMutation(SEND_ETRANSFER);
+  const [sendEtransfer] = useMutation(SEND_ETRANSFER, {
+    refetchQueries: [
+      { query: GET_ACCOUNT_DETAILS, variables: { accountId: props.accId } },
+    ],
+  });
 
   const submitFormHandler = (e) => {
     e.preventDefault();

@@ -39,7 +39,9 @@ const Account = (props) => {
         <div className={classes.bottom}>
           <div>
             <p>Balance</p>
-            <span className={classes.balance}>$ {props.balance}</span>
+            <span className={classes.balance}>
+              $ {props.balance.toFixed(2)}
+            </span>
           </div>
           {props.goal_amount ? (
             <div>
