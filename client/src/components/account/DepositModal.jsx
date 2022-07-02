@@ -1,40 +1,7 @@
 import { useMutation, gql } from '@apollo/client';
 import { useState } from 'react';
 import Modal from '../../UI/Modal/Modal';
-
-const DEPOSIT_MONEY = gql`
-  mutation Mutation($transactionDetail: TransactionInput) {
-    createTransaction(transactionDetail: $transactionDetail) {
-      id
-      account_id
-      description
-      type
-      createdAt
-      amount
-    }
-  }
-`;
-
-const GET_ACCOUNT_DETAILS = gql`
-  query Query($accountId: ID!) {
-    getAccountDetailAndTransactions(accountId: $accountId) {
-      account {
-        type
-        acc_number
-        name
-        balance
-        goal_amount
-      }
-      transactions {
-        id
-        description
-        type
-        createdAt
-        amount
-      }
-    }
-  }
-`;
+import { GET_ACCOUNT_DETAILS, DEPOSIT_MONEY } from '../../store/queries';
 
 const DepositModal = (props) => {
   const [value, setValue] = useState({});
@@ -42,29 +9,6 @@ const DepositModal = (props) => {
     refetchQueries: [
       { query: GET_ACCOUNT_DETAILS, variables: { accountId: props.accId } },
     ],
-    /* update: (cache, { data }) => {
-      const newTransResponse = data?.createTransaction;
-      const existingTrans = cache.readQuery({
-        query: GET_ACCOUNT_DETAILS,
-        variables: { accountId: props.accId },
-      });
-      console.log(newTransResponse);
-      console.log(existingTrans);
-      if (newTransResponse && existingTrans) {
-        cache.writeQuery({
-          query: GET_ACCOUNT_DETAILS,
-          data: {
-            getAccountDetailAndTransactions: {
-              account: existingTrans?.getAccountDetailAndTransactions?.account,
-              transactions: [
-                newTransResponse,
-                ...existingTrans?.getAccountDetailAndTransactions?.transactions,
-              ],
-            },
-          },
-        });
-      }
-    } */
   });
 
   const inputChangeHandler = (e) => {

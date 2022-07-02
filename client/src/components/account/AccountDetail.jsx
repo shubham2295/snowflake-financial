@@ -5,27 +5,7 @@ import classes from './AccountDetail.module.css';
 import TransactionList from './TransactionList';
 import DepositModal from './DepositModal';
 import EtransferModal from './EtransferModal';
-
-const GET_ACCOUNT_DETAILS = gql`
-  query Query($accountId: ID!) {
-    getAccountDetailAndTransactions(accountId: $accountId) {
-      account {
-        type
-        acc_number
-        name
-        balance
-        goal_amount
-      }
-      transactions {
-        id
-        description
-        type
-        createdAt
-        amount
-      }
-    }
-  }
-`;
+import { GET_ACCOUNT_DETAILS } from '../../store/queries';
 
 const AccountDetail = () => {
   const [depositModalVisible, setDepositModalVisible] = useState(false);

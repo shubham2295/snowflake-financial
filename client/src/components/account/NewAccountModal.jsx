@@ -1,29 +1,16 @@
 import { useState } from 'react';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import Modal from '../../UI/Modal/Modal';
-
-const CREATE_ACC = gql`
-  mutation Mutation($accountDetail: CreateAccountInput) {
-    createAccount(accountDetail: $accountDetail) {
-      id
-      user_id
-      acc_number
-      type
-      name
-      balance
-      goal_amount
-    }
-  }
-`;
+import { CREATE_ACC, GET_ALL_ACCOUNTS } from '../../store/queries';
 
 const NewAccountModal = (props) => {
   const [value, setValue] = useState({});
-
-  const [createAccount] = useMutation(CREATE_ACC);
+  const [createAccount] = useMutation(CREATE_ACC, {
+    refetchQueries: [{ query: GET_ALL_ACCOUNTS }],
+  });
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-    console.log(value);
     createAccount({
       variables: {
         accountDetail: {
@@ -39,8 +26,6 @@ const NewAccountModal = (props) => {
   };
 
   const inputChangeHandler = (e) => {
-    console.log(value);
-
     setValue({ ...value, [e.target.name]: e.target.value });
   };
 
