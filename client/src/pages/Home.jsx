@@ -1,23 +1,9 @@
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 import AccountList from '../components/account/AccountList';
 import NewAccountModal from '../components/account/NewAccountModal';
 import classes from './Home.module.css';
-
-const GET_ALL_ACCOUNTS = gql`
-  query Query {
-    getAllAccounts {
-      id
-      acc_number
-      type
-      name
-      balance
-      goal_amount
-      end_date
-      is_freeze
-    }
-  }
-`;
+import { GET_ALL_ACCOUNTS } from '../store/queries';
 
 const Home = () => {
   const { data } = useQuery(GET_ALL_ACCOUNTS, {

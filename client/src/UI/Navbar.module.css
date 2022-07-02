@@ -20,6 +20,7 @@ a {
   all: unset;
   margin-right: 1rem;
   font-weight: bold;
+  position: relative;
 }
 
 .btn {
@@ -31,4 +32,20 @@ a {
 .btn:hover {
   transform: scale(1.1);
   background-color: var(--dark-purple);
+}
+
+.navlinks a::after {
+  content: '';
+  display: block;
+  height: 4px;
+  white-space: nowrap;
+  left: 50%;
+  position: absolute;
+  background: var(--dark-purple);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.navlinks a:hover:after {
+  width: 100%;
+  left: 0;
 }
