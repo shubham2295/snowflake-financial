@@ -8,3 +8,12 @@
   border: 0.063rem solid rgba(255, 255, 255, 0.3);
   padding: 1.5rem;
 }
+
+.alert_warning {
+  font-size: small;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}

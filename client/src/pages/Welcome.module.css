@@ -27,6 +27,12 @@
   background-color: var(--dark-purple);
 }
 
+footer {
+  text-align: center;
+  box-shadow: 0 1px 25px #e5e7eb;
+  padding: 0.5rem;
+}
+
 .hero_img {
   height: 20rem;
   width: 20rem;

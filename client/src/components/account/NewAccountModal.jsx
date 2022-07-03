@@ -35,8 +35,12 @@ const NewAccountModal = (props) => {
         <div className='form_body'>
           <h1 className='form_title'>New Account</h1>
           <label htmlFor='type'>Account Type</label>
-          <select name='type' onChange={inputChangeHandler}>
-            <option disabled selected value>
+          <select
+            name='type'
+            onChange={inputChangeHandler}
+            defaultValue='select'
+          >
+            <option disabled value='select'>
               -- select type --
             </option>
             <option value='DEBIT'>Debit</option>

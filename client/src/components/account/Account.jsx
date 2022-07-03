@@ -10,7 +10,11 @@ const Account = (props) => {
 
   return (
     <Link to={`/accountDetail/?acctId=${props.id}`}>
-      <div className={classes.main}>
+      <div
+        className={`${classes.main} ${
+          props.type === 'CREDIT' ? classes.credit : classes.debit
+        }`}
+      >
         <h4 className={classes.bold}>
           {props.acc_number
             ? props?.acc_number?.toString().slice(-4).padStart(16, '*')
@@ -27,8 +31,8 @@ const Account = (props) => {
                 value={goalPercent}
                 text={goalPercent >= 100 ? '✔️' : goalPercent + '%'}
                 styles={buildStyles({
-                  pathColor: `#76BA99`,
-                  textColor: `#646fd4`,
+                  pathColor: `#7984EE`,
+                  textColor: `#F05454`,
                 })}
               />
             </div>

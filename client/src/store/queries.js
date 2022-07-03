@@ -12,6 +12,15 @@ export const GET_USER_BY_EMAIL = gql`
   }
 `;
 
+export const REGISTER_USER = gql`
+  mutation RegisterUser($userDetail: RegisterUserInput) {
+    registerUser(userDetail: $userDetail) {
+      firstname
+      token
+    }
+  }
+`;
+
 export const SEND_ETRANSFER = gql`
   mutation SendEtransfer($etransferDetail: EtransferInput) {
     sendEtransfer(etransferDetail: $etransferDetail) {

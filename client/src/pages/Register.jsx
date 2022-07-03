@@ -1,26 +1,14 @@
-import classes from './Register.module.css';
-import { useMutation, gql } from '@apollo/client';
 import { useState, useContext } from 'react';
+import { useMutation, useLazyQuery } from '@apollo/client';
+import { REGISTER_USER, GET_USER_BY_EMAIL } from '../store/queries';
+import classes from './Register.module.css';
 import AuthContext from '../store/auth-ctx';
-
-const REGISTER_USER = gql`
-  mutation RegisterUser($userDetail: RegisterUserInput) {
-    registerUser(userDetail: $userDetail) {
-      firstname
-      token
-    }
-  }
-`;
 
 const Register = () => {
   const authCtx = useContext(AuthContext);
 
-  const [user, setUser] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-  });
+  const [user, setUser] = useState({});
+  const [isEmailExist, { data }] = useLazyQuery(GET_USER_BY_EMAIL);
 
   const [registerUser] = useMutation(REGISTER_USER, {
     variables: { userDetail: { ...user } },
@@ -38,6 +26,14 @@ const Register = () => {
       console.log(graphQLErrors);
     },
   });
+
+  const checkEmail = () => {
+    isEmailExist({
+      variables: {
+        email: user.email,
+      },
+    });
+  };
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -71,7 +67,13 @@ const Register = () => {
           name='email'
           placeholder='Email'
           onChange={handleChange}
+          onBlur={checkEmail}
         />
+        {data?.getUserByEmail && (
+          <p className={classes.alert_warning}>
+            Email already in use. Please use other email address to sign up.
+          </p>
+        )}
         <label htmlFor='password'></label>
         <input
           type='password'
