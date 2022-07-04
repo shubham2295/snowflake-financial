@@ -29,7 +29,7 @@ const Account = (props) => {
             <div className={classes.circle}>
               <CircularProgressbar
                 value={goalPercent}
-                text={goalPercent >= 100 ? '✔️' : goalPercent + '%'}
+                text={goalPercent >= 100 ? '✅' : goalPercent + '%'}
                 styles={buildStyles({
                   pathColor: `#7984EE`,
                   textColor: `#F05454`,
