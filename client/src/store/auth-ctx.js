@@ -20,7 +20,7 @@ export const AuthContextProvider = (props) => {
   const logoutHandler = () => {
     localStorage.clear();
     setUser(null);
-    navigate('/login');
+    navigate('/');
   };
 
   const loginHandler = (token) => {
