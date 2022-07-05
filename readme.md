@@ -4,6 +4,8 @@
 
 A customer-focused bank that provides complete financial solutions to meet your entire financial needs.
 
+![snow](https://github.com/shubham2295/snowflake-financial/blob/main/docs/snow.gif)
+
 ## ✨ Features
 
 - Create accounts
@@ -23,7 +25,7 @@ Start running locally.
 Fork the repository. then clone the repo locally by doing -
 
 ```sh
-git clone https://github.com/anuraghazra/snowflake-financial.git
+git clone https://github.com/shubham2295/snowflake-financial.git
 ```
 
 ### Step 2: Install Dependencies
