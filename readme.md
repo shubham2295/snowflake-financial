@@ -4,7 +4,7 @@
 
 A customer-focused bank that provides complete financial solutions to meet your entire financial needs.
 
-## Features
+## ✨ Features
 
 - Create accounts
 - Set goal
@@ -74,14 +74,13 @@ A quick look at the folder structure of this project.
         ├───index.js
         └───package.json
 
-
 ## Screenshots
 
-![Homepage]()
-![accounts]()
-![accountdetail]()
-![etransfer]()
-![deposit]()
+![Homepage](https://github.com/shubham2295/snowflake-financial/blob/main/docs/home.png)
+![accounts](https://github.com/shubham2295/snowflake-financial/blob/main/docs/accounts.png)
+![accountdetail](https://github.com/shubham2295/snowflake-financial/blob/main/docs/details.png)
+![etransfer](https://github.com/shubham2295/snowflake-financial/blob/main/docs/etransfer.png)
+![deposit](https://github.com/shubham2295/snowflake-financial/blob/main/docs/deposit.png)
 
 ## Tech Stack
 
