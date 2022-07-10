@@ -51,6 +51,9 @@ a {
 .logo {
   margin-right: 1rem;
   height: 3.5rem;
+}
+
+.align {
   align-self: center;
 }
 
@@ -63,7 +66,7 @@ a {
     height: 2.5rem;
   }
   .navlinks {
-    font-size: 11px;
+    font-size: 10.6px;
   }
   .navlinks li,
   a {
