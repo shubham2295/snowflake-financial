@@ -8,7 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className={classes.navbar}>
-      <h1 className={classes.logo}>❄️</h1>
+      <img className={classes.logo} src='/images/logo.svg' alt='logo' />
       <ul className={classes.navlinks}>
         {authCtx.user && <li>Hello {authCtx.user.firstname} </li>}
         {authCtx.user && (
