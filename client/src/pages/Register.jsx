@@ -10,7 +10,7 @@ const Register = () => {
   const [user, setUser] = useState({});
   const [isEmailExist, { data }] = useLazyQuery(GET_USER_BY_EMAIL);
 
-  const [registerUser] = useMutation(REGISTER_USER, {
+  const [registerUser, { loading }] = useMutation(REGISTER_USER, {
     variables: { userDetail: { ...user } },
     update: (
       _,
@@ -82,9 +82,17 @@ const Register = () => {
           onChange={handleChange}
         />
         <div className='form_body_btn_action'>
-          <button type='submit' className='btn done'>
-            Register
-          </button>
+          {loading ? (
+            <img
+              className={classes.loader}
+              src='/images/rings.svg'
+              alt='loader'
+            />
+          ) : (
+            <button type='submit' className='btn done'>
+              Register
+            </button>
+          )}
         </div>
       </form>
     </div>

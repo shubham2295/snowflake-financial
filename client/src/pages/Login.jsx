@@ -19,7 +19,7 @@ const Login = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const [loginUser] = useMutation(USER_LOGIN, {
+  const [loginUser, { loading }] = useMutation(USER_LOGIN, {
     update: (
       _,
       {
@@ -63,9 +63,17 @@ const Login = () => {
           ref={passwordRef}
         />
         <div className='form_body_btn_action'>
-          <button type='submit' className='btn done'>
-            Login
-          </button>
+          {loading ? (
+            <img
+              className={classes.loader}
+              src='/images/rings.svg'
+              alt='loader'
+            />
+          ) : (
+            <button type='submit' className='btn done'>
+              Login
+            </button>
+          )}
         </div>
       </form>
     </div>
