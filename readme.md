@@ -16,6 +16,13 @@ A customer-focused bank that provides complete financial solutions to meet your 
 - JWT authentication
 - Apollo studio integration
 
+## :hammer_and_wrench: Tech Stack
+
+|          |                                                                                                                 |                                                                                                                                    |                                                                                                                       |                                                                                                                               |                                                                                                                |
+| -------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| FrontEnd | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/react.svg" > <br />Reactjs</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/javascript.svg" height="50"> <br />JavaScript</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/apollo.svg"> <br />Apollo Client</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/netlify.svg" height ="50"> <br />Netlify</p> |
+| BackEnd  | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/nodejs.svg" > <br />Nodejs</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/graphql.svg" height="50"> <br />GraphQL</p>       | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/apollo.svg"> <br />Apollo Server</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/mongodb.svg" > <br />MongoDB</p>             | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/heroku.svg"> <br />Heroku</p> |
+
 ## :rocket: Quick start
 
 Start running locally.
@@ -83,13 +90,6 @@ A quick look at the folder structure of this project.
 ![accountdetail](https://github.com/shubham2295/snowflake-financial/blob/main/docs/details.png)
 ![etransfer](https://github.com/shubham2295/snowflake-financial/blob/main/docs/etransfer.png)
 ![deposit](https://github.com/shubham2295/snowflake-financial/blob/main/docs/deposit.png)
-
-## Tech Stack
-
-| Stack    | -                                                                                                               | -                                                                                                                      | -                                                                                                                 | -                                                                                                                                       | -                                                                     |
-| -------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| FrontEnd | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/react.svg" > <br />Reactjs</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/apollo.svg" > <br />Apollo Client</p> | <p align="center"><img src="./assets/redux_logo.png" > <br />Redux</p>                                            | <p align="center"><img src="./assets/styledcompo_logo.png" > <br />Styled Components</p>                                                | <p align="center"><img src="./assets/cy_logo.png" > <br />Cypress</p> |
-| BackEnd  | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/nodejs.svg" > <br />Nodejs</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/apollo.svg"> <br />Apollo Server</p>  | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/mongodb.svg" > <br />MongoDB</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/heroku.svg" width="100" height="100"> <br />Heroku</p> |
 
 ---
 
