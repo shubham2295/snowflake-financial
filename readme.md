@@ -86,9 +86,10 @@ A quick look at the folder structure of this project.
 
 ## Tech Stack
 
-**Client:** Javascript, React, Apollo Client, Mongoose, Netlify
-
-**Server:** Node, GraphQL, Apollo Server, MongoDB, JWT, Heroku
+| Stack    | -                                                                                                               | -                                                                                                                      | -                                                                                                                 | -                                                                                                                                       | -                                                                     |
+| -------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| FrontEnd | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/react.svg" > <br />Reactjs</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/apollo.svg" > <br />Apollo Client</p> | <p align="center"><img src="./assets/redux_logo.png" > <br />Redux</p>                                            | <p align="center"><img src="./assets/styledcompo_logo.png" > <br />Styled Components</p>                                                | <p align="center"><img src="./assets/cy_logo.png" > <br />Cypress</p> |
+| BackEnd  | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/nodejs.svg" > <br />Nodejs</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/apollo.svg"> <br />Apollo Server</p>  | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/mongodb.svg" > <br />MongoDB</p> | <p align="center"><img src="https://shubhampatel.netlify.app/assets/placeholders/heroku.svg" width="100" height="100"> <br />Heroku</p> |
 
 ---
 
