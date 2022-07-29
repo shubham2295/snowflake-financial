@@ -8,6 +8,11 @@ const getUser = require('./utils/getUser');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  csrfPrevention: true,
+  cors: {
+    //whitelist the client here for cors
+    origin: ["https://example.com", "https://studio.apollographql.com"]
+  },
   context: ({ req }) => {
     const token = req.headers.authorization || '';
     if (token) {
