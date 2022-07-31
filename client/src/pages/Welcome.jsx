@@ -6,7 +6,7 @@ const Welcome = () => {
       <div className={classes.main}>
         <div className={classes.title}>
           <div className={classes.title_text}>
-            <h1>
+            <h1 data-testid='hero-txt'>
               Put &nbsp;
               <span className={classes.highlight}>money</span>
               <br />

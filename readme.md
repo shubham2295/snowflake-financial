@@ -67,6 +67,7 @@ A quick look at the folder structure of this project.
     ├── client
     |   ├─public
     │   └─src
+    │     ├───tests
     │     ├───components
     │     ├───pages
     │     ├───store
@@ -75,7 +76,6 @@ A quick look at the folder structure of this project.
     │     ├───index.js
     │     └───package.json
     └── server
-        │
         ├───graphql
         ├───models
         ├───resolvers
