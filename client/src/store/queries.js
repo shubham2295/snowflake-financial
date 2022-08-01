@@ -12,6 +12,16 @@ export const GET_USER_BY_EMAIL = gql`
   }
 `;
 
+export const USER_LOGIN = gql`
+  mutation Mutation($userDetail: LoginUserInput) {
+    loginUser(userDetail: $userDetail) {
+      firstname
+      email
+      token
+    }
+  }
+`;
+
 export const REGISTER_USER = gql`
   mutation RegisterUser($userDetail: RegisterUserInput) {
     registerUser(userDetail: $userDetail) {

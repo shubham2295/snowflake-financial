@@ -2,11 +2,13 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Welcome from '../pages/Welcome';
 
+const setup = () => render(<Welcome />);
+
 describe('Welcome page', () => {
 
-  test('renders hero text', () => {
+  test('renders title text', () => {
 
-    render(<Welcome />);
+    setup();
     const heroTextEle = screen.getByTestId('hero-txt');
     expect(heroTextEle).toHaveTextContent(/Put moneywhere your heart is/i);
 
@@ -14,8 +16,8 @@ describe('Welcome page', () => {
 
   test('renders hero image', () => {
 
-    render(<Welcome />);
-    const heroImgEle = screen.queryAllByAltText('hero')[0];
+    setup();
+    const heroImgEle = screen.queryByAltText('hero');
     expect(heroImgEle).toBeInTheDocument();
 
   });

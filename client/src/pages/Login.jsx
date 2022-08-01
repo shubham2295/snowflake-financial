@@ -1,21 +1,11 @@
 import classes from './Register.module.css';
-import { useMutation, gql } from '@apollo/client';
-import { useRef, useContext } from 'react';
 import AuthContext from '../store/auth-ctx';
-
-const USER_LOGIN = gql`
-  mutation Mutation($userDetail: LoginUserInput) {
-    loginUser(userDetail: $userDetail) {
-      firstname
-      email
-      token
-    }
-  }
-`;
+import { USER_LOGIN } from '../store/queries';
+import { useMutation } from '@apollo/client';
+import { useRef, useContext } from 'react';
 
 const Login = () => {
   const authCtx = useContext(AuthContext);
-
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 

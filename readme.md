@@ -67,7 +67,7 @@ A quick look at the folder structure of this project.
     ├── client
     |   ├─public
     │   └─src
-    │     ├───tests
+    │     ├───__tests__
     │     ├───components
     │     ├───pages
     │     ├───store
