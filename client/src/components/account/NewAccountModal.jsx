@@ -20,7 +20,7 @@ const NewAccountModal = (props) => {
           end_date: value.end_date ? new Date(value.end_date) : '',
         },
       },
-      onCompleted: (data) => console.log(data),
+      onCompleted: (data) => data,
     });
     props.onCloseModal();
   };

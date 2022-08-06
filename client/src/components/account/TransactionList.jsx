@@ -2,7 +2,6 @@ import classes from './AccountDetail.module.css';
 import Transaction from './Transaction';
 
 const TransactionList = (props) => {
-  console.log(props);
   const trasactionList = props?.transactions
     ?.slice()
     ?.sort((a, b) => {

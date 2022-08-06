@@ -15,7 +15,7 @@ const resolvers = {
   },
   AccountDetail: {
     __resolveType: object => {
-      console.log('Executed or not', object);
+
       if (object.accountDetail.balance) {
         return 'Account';
       }

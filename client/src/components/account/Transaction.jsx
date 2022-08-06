@@ -10,7 +10,7 @@ const Transaction = (props) => {
         <div>
           <div className={classes.trans_desc}>{props.description}</div>
           <div className={classes.trans_date}>
-            {props.createdAt.substring(0, 15)}
+            {new Date(props.createdAt).toString().substring(0, 15)}
           </div>
         </div>
       </div>

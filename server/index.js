@@ -11,7 +11,7 @@ const server = new ApolloServer({
   csrfPrevention: true,
   cors: {
     //whitelist the client here for cors
-    origin: ["https://example.com", "https://studio.apollographql.com"]
+    origin: ["http://localhost:3000", "https://studio.apollographql.com"]
   },
   context: ({ req }) => {
     const token = req.headers.authorization || '';

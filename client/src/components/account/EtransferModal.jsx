@@ -36,7 +36,7 @@ const EtransferModal = (props) => {
             sender_name: `${firstname} ${lastname}`,
           },
         },
-        onCompleted: (data) => console.log(data),
+        onCompleted: (data) => data,
       });
     }
 
@@ -62,7 +62,7 @@ const EtransferModal = (props) => {
                 variables: {
                   email: value.email,
                 },
-                onCompleted: (data) => console.log(data),
+                onCompleted: (data) => data,
               });
             }}
           ></input>

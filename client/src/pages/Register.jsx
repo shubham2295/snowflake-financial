@@ -22,9 +22,7 @@ const Register = () => {
     ) => {
       authCtx.onLogin(token);
     },
-    onError: ({ graphQLErrors }) => {
-      console.log(graphQLErrors);
-    },
+    onError: ({ graphQLErrors }) => graphQLErrors,
   });
 
   const checkEmail = () => {

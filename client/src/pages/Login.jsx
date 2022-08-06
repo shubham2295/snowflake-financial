@@ -20,9 +20,7 @@ const Login = () => {
     ) => {
       authCtx.onLogin(token);
     },
-    onError: ({ graphQLErrors }) => {
-      console.log(graphQLErrors);
-    },
+    onError: ({ graphQLErrors }) => graphQLErrors,
   });
 
   const formSubmitHandler = (e) => {

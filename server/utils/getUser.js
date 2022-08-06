@@ -9,7 +9,6 @@ const getUser = (authHeader) => {
 
   jwt.verify(token, "THIS_IS_SECRET", async (err, decoded) => {
     if (err) {
-      console.log(err);
       throw new ApolloError('Invalid Authorization Token', 'INVALID_TOKEN');
     }
     userId = decoded.id;
